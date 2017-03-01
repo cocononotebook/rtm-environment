@@ -1,0 +1,29 @@
+# Oracle 11g & R & Shiny
+
+# Downloaded Oracle 11g zip File & mkdir ora11gFile Folder by root.
+
+#cd dir to the file location & command "ll" check the files exist
+
+#start the oracle install now
+unzip linux.x64_11gR2_database_1of2.zip
+unzip linux.x64_11gR2_database_2of2.zip
+
+#edit the file "/etc/hosts" 
+sudo vim /etc/hosts
+
+#[IP adress] [machine-name.domain-name] [machine-name]
+192.168.11.29 ol7-11gr2.loacl ol7-11gr2
+
+#install ol7.repo
+cd /etc /yum.repos
+wget http://yum.oracle.com/public-yum-ol7.repo
+
+#Choose "AutoSeutp"
+yum install oracle-rdbms-server-11gR2-preinstall
+yum update
+
+#Set the password for Oracle
+passwd oracle
+
+#edit file from path etc/selinux/config
+sudo vim /etc/selinux/config
