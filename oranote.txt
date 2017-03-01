@@ -14,6 +14,13 @@ sudo vim /etc/hosts
 #[IP adress] [machine-name.domain-name] [machine-name]
 192.168.11.29 ol7-11gr2.loacl ol7-11gr2
 
+#Set the file ,path: /etc/hostname
+
+cd /
+cd etc
+vim hostname
+ol7-11gr2.loacl
+
 #install ol7.repo
 cd /etc /yum.repos
 wget http://yum.oracle.com/public-yum-ol7.repo
@@ -27,3 +34,50 @@ passwd oracle
 
 #edit file from path etc/selinux/config
 sudo vim /etc/selinux/config
+
+#restart server or following command
+setenforce Permission
+
+#If Linux Firewall enable, plz disable or configure it
+systemctl stop firewalld
+systemctl disable firewalld
+
+#Create directory in which Oracle Software will be installed
+cd ~
+mkdir -p /oracle/product/11.2.0.4/db_1
+cd /
+chown -R oracle:oinstall /oracle
+chmod -R 775 oracle/
+
+#Login as root and issue the following command xhost + [machine-name]
+xhost +ol7-11gr2
+
+#Add following lines at/home/oracle/.bash_profile
+cd ~
+su - oracle
+vi .bash_profile
+
+# Oracle Settings
+TMP=/tmp; export TMP
+TMPDIR=$TMP; export TMPDIR
+
+ORACLE_HOSTNAME=ol7-11gr2.loacl; export ORACLE_HOSTNAME
+ORACLE_UNQNAME=DB11G; export ORACLE_UNQNAME
+ORACLE_BASE=/u01/app/oracle; export ORACLE_BASE
+ORACLE_HOME=$ORACLE_BASE/product/11.2.0.4/db_1; export ORACLE_HOME
+ORACLE_SID=DB11G; export ORACLE_SID
+ORACLE_TERM=xterm; export ORACLE_TERM
+PATH=/usr/sbin:$PATH; export PATH
+PATH=$ORACLE_HOME/bin:$PATH; export PATH
+
+LD_LIBRARY_PATH=$ORACLE_HOME/lib:/lib:/usr/lib; export LD_LIBRARY_PATH
+CLASSPATH=$ORACLE_HOME/JRE:$ORACLE_HOME/jlib:$ORACLE_HOME/rdbms/jlib; export CLASSPATH
+
+##after that.
+
+[root..] . ./.bash_profile
+
+#Installation
+DISPLAY=ol7-11gr2:0.0; export DISPLAY
+cd / [database loaction]
+./runInstaller
