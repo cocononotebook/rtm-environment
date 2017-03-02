@@ -81,3 +81,6 @@ CLASSPATH=$ORACLE_HOME/JRE:$ORACLE_HOME/jlib:$ORACLE_HOME/rdbms/jlib; export CLA
 DISPLAY=ol7-11gr2:0.0; export DISPLAY
 cd / [database loaction]
 ./runInstaller
+
+
+# 
