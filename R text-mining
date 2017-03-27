@@ -15,6 +15,6 @@ text_df(line=1:length(text),text=text,stringsAsFactors=FALSE)
 text_df %>%
   #與text有關..
   
-unnest_tokens(token=word,text)
+unnest_tokens(word,text)
   #word為output
   #text為input
