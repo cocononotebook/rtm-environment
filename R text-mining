@@ -1,0 +1,20 @@
+install.packages("dplyr")
+
+library(dplyr)
+
+install.packages("tidytext")
+
+library(tidytext)
+
+text<-c("我愛爸爸跟媽媽",",哥哥姊姊也都愛",",我為人人",",天下人負我")
+
+text_df(line=1:length(text),text=text,stringsAsFactors=FALSE)
+
+  #方法與呈現，與Tibbles套件呈現與方法一模一樣
+
+text_df %>%
+  #與text有關..
+  
+unnest_tokens(token=word,text)
+  #word為output
+  #text為input
