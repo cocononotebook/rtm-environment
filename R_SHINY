@@ -16,11 +16,25 @@
   #範例
     ui <- fluidPage(
             sliderInput(inputId = "num",
-              #Input
+            #sliderInput的Id為"num"
             label = "Choose a number",
             value = 25, min = 1, max = 100),
             plotOutput("hist")
-              #Output
+            #plotOutput的ID為"hist"
            )
     server <- function(input, output) {}
     shinyApp(ui = ui, server = server)
+   
+#Server端類方法
+  #Render-水管意味
+    #教學1_PDF_P40
+  
+  #範例
+     server <- function(input, output) {
+        output$hist <- renderPlot({上
+        hist(rnorm(input$num))
+            #server端的output接上ui端的outputId
+              ,使用plot水管方法,將ui端outputId標
+              上rnorm亂數引數接ui端的inputId.
+        })
+     }
