@@ -7,7 +7,7 @@
   #將設計客戶、伺服器端分別呼叫
   shinyApp(ui = ui, server = server)
   
-#ui端類方法
+#Ui端類方法
   #Input
     #教學1_PDF_P24
   #Output
@@ -38,3 +38,9 @@
               上rnorm亂數引數接ui端的inputId.
         })
      }
+
+#ShinyApp, Ui,Server
+  #ShinyApp = Ui + Server = 可執行
+  #Ui + Server = 可執行
+  #不同在於設計時的個人喜好
+  #可從RSTUDIO去設定ShinyAPP或分離為Ui , server
