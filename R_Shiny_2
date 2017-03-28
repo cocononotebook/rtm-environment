@@ -1,0 +1,33 @@
+#介紹 Reactive()
+  #可自行定義一物件方法。
+  #範例:
+    server <- function(input, output) {
+      output$hist <- renderPlot({
+      hist(rnorm(input$num))
+    })
+    output$stats <- renderPrint({
+      summary(rnorm(input$num))
+    })
+    }
+   #---------------------------------#
+   server <- function(input, output) {
+      data <- reactive({
+      rnorm(input$num)
+    })
+    output$hist <- renderPlot({
+      hist(data())
+    })
+    output$stats <- renderPrint({
+      summary(data())
+    })
+    }
+    #--------------------------------#
+ #介紹isolate()
+  #不傳遞，僅接受。(意味無法傳遞設定，但能接受接受設定)
+ 
+ #介紹observeEvent()
+  #在伺服器端觀察數據
+ 
+ #介紹Delpay()
+  #延遲後端呈現次序
+   
