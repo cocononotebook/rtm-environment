@@ -1,0 +1,26 @@
+#起手式
+  library(shiny)
+  #設計客戶端
+  ui <- fluidPage()
+  #設計伺服器端
+  server <- function(input, output) {}
+  #將設計客戶、伺服器端分別呼叫
+  shinyApp(ui = ui, server = server)
+  
+#ui端類方法
+  #Input
+    #教學1_PDF_P24
+  #Output
+    #教學1_PDF_P28
+    
+  #範例
+    ui <- fluidPage(
+            sliderInput(inputId = "num",
+              #Input
+            label = "Choose a number",
+            value = 25, min = 1, max = 100),
+            plotOutput("hist")
+              #Output
+           )
+    server <- function(input, output) {}
+    shinyApp(ui = ui, server = server)
