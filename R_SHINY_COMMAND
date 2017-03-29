@@ -1,3 +1,4 @@
 #UI Layout
-  #NavabarPage()
-  #pageWithSidebar()
+  #sidebayLayout是畫出一個框架，框架裡面可以放Panel或是title...等等
+  #mainPanel與sidebarLayout同等級，創造可以放置Panel的畫布
+  #tabsetPanel做出選項的Panel
